@@ -1,0 +1,16 @@
+ <?php
+   include("config.php");
+   if(isset($_POST['login'])){
+    $sql = mysqli_query($conn,
+    "SELECT * FROM user WHERE username='"
+    . $_POST["username"] . "' AND 
+    password='" .$_POST["password"] . "'  ");
+
+    $num = mysqli_num_rows($sql);
+    if($num > 0){
+        $row = mysqli_fetch_array($sql);
+        header("location:productform.php");
+        exit();
+    }
+   }
+   ?>
